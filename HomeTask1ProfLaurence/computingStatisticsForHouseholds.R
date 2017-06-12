@@ -27,9 +27,9 @@ names(home_dfs_by_year) <- c("1990", "2000", "2010")
 
 #get data of years 1990, 2000, 2010 in a list with duplicates removed, removed na
 #and only households with strictly positive income (HHINCOME)
-home_dfs_by_year <- lapply(home_dfs_by_year, function (df) df[!duplicated(df) & 
-                                                              df$HHINCOME > 0 & 
-                                                              complete.cases(df),])
+home_dfs_by_year <- lapply(home_dfs_by_year, function (df) subset(df, !duplicated(df) &
+                                                                      df$HHINCOME > 0 & 
+                                                                      complete.cases(df)))
 
 #HELPER FUNCTIONS TO REMOVE NULL DATA
 
@@ -94,12 +94,12 @@ variance_VALUEH_own_dwelling <- lapply(home_dfs_values_cleaned,
 
 #compute 10th, 90th percentile and variance of RENTGRS for households that do not own main dwelling 
 #for each year and each msa
-percentile_10th_90th_RENTGRS_not_own_dwelling <- lapply(home_dfs_values_cleaned, 
+percentile_10th_90th_RENTGRS_not_own_dwelling <- lapply(home_dfs_ownership_corrected, 
                                                         tenth_ninetieth_percentile_variance_by_year_by_msas, 
                                                         value = "RENTGRS", ownership = 2,
                                                         type="percentile")
 
-variance_RENTGRS_not_own_dwelling <- lapply(home_dfs_values_cleaned, 
+variance_RENTGRS_not_own_dwelling <- lapply(home_dfs_ownership_corrected, 
                                             tenth_ninetieth_percentile_variance_by_year_by_msas, 
                                             value = "RENTGRS", ownership = 2,
                                             type="variance")
