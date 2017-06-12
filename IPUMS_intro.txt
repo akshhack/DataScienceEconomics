@@ -1,0 +1,26 @@
+IPUMS website offers variables/characteristics upon
+which one can extract datasets of population
+
+Broad Categories of Variables:
+	0 Households - broader
+	0 Person - more specific
+
+- Unique ID for households:
+	Combination of YEAR, DATANUM, SERIAL
+	datanum: is sampling method used
+	serial: is serial # of household
+ 
+- Unique ID for person:
+	Combination of YEAR, DATANUM, SERIAL
+	and PERNUM
+
+First taksk completed...
+Extracted population data with income, possession of
+tv, phone from years 1900 - 2015 with arbitraty years
+chosen from this period.
+
+Second task completed...
+
+
+Third task...
+Trying in pythong pandas
